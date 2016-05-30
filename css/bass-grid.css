@@ -1,0 +1,531 @@
+/*
+Project:      Bass - A smart, lightweight responsive grid, built with Sass
+Project URI:  http://timpotter.github.io/bass-grid
+Version:      1.1.1
+Updated:      20th November 2014
+Author:       Tim Potter
+Author URI:   http://littlethunder.co
+*/
+/* HTML5 Reset
+------------------------------------------------------------------------------------------------------------------------------------------ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+/* Apply a natural box layout model to all elements */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* Turns off the ugly iOS input shadows */
+input,
+textarea {
+  -webkit-appearance: none; }
+
+/* Turns off Chrome Default Focus Outline */
+* {
+  outline: none; }
+
+/* Everything in layout.scss is for the styling of the demo page only and is not needed
+------------------------------------------------------------------------------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Loungy';
+  src: url("../fonts/loungy.woff") format("woff"), url("../fonts/loungy.svg#Fontdinerdotcom-Loungy") format("svg"), url("../fonts/loungy.eot"), url("../fonts/loungy.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal; }
+/* Typography
+------------------------------------------------------------------------------------------------------------------------------------------ */
+body {
+  text-align: center;
+  font: 1em "Open Sans", sans-serif;
+  color: #4D4D4D;
+  -webkit-font-smoothing: antialiased;
+  background: #F9F082; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+h1 {
+  color: #FFEC00;
+  text-align: center;
+  margin: 0 auto;
+  text-indent: -9999px;
+  background: url("../images/nelly-fandango.svg") no-repeat;
+  background-size: contain;
+  height: 196px;
+  max-width: 716px;
+  font-weight: normal;
+  text-transform: lowercase; }
+  @media screen and (max-width: 400px) {
+    h1 {
+      font-size: 4.5em; } }
+
+h2 {
+  font-weight: normal;
+  font-size: 20px;
+  color: white;
+  text-align: left; }
+
+.button {
+  font-size: 1.5625em;
+  /* 25/16 */
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 30px; }
+  .button:hover {
+    background: transparent; }
+
+.buy-button {
+  background: url("../images/ibooks-download.svg");
+  width: 138px;
+  height: 50px; }
+  .buy-button:hover, .buy-button:focus, .buy-button:active {
+    opacity: .7; }
+
+.header-buy-button {
+  position: relative; }
+
+.version {
+  font-size: 10px;
+  margin-top: 5px;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold; }
+
+p {
+  color: #4D4D4D;
+  font-size: 1.25em;
+  /* 20/16 */ }
+  p.small {
+    font-size: 12px; }
+
+p a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit; }
+  p a:hover, p a:focus, p a:active {
+    border-bottom: 2px dashed; }
+
+/* Layout
+------------------------------------------------------------------------------------------------------------------------------------------ */
+header {
+  padding: 10px;
+  background: #742C16; }
+
+.container {
+  color: #000;
+  margin-top: 40px; }
+  .container h3 {
+    font-size: 2.25em;
+    /* 36/16 */
+    font-family: 'Loungy', serif;
+    display: block;
+    clear: both;
+    margin-top: 6px;
+    color: #742C16;
+    font-size: 2.25em;
+    /* 36/16 */ }
+  .container p {
+    font-weight: normal;
+    padding: 6px;
+    margin-top: 4px;
+    border-radius: 4px;
+    display: inline-block; }
+
+.main {
+  padding-bottom: 40px; }
+  .main p, .main h3 {
+    text-align: left; }
+
+.white-pattern {
+  background: url("../images/body-bg.png") no-repeat;
+  background-position: -30px bottom;
+  background-size: contain; }
+
+.yellow-bg {
+  background: #F9F082; }
+
+.yellow-pattern {
+  background: white; }
+
+@media screen and (min-width: 668px) {
+  .yellow-pattern {
+    background: url("../images/body-bg-yellow.png") white no-repeat;
+    background-position: -30px 270px; } }
+.title-container {
+  margin: 20px 0; }
+
+.bottom-image {
+  position: relative;
+  margin-bottom: -65px; }
+
+.call-to-actions {
+  background: white;
+  padding: 60px 0; }
+
+.circle-button {
+  border-radius: 50%;
+  background: black;
+  height: 200px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  width: 200px;
+  font-size: 1.125em;
+  /* 18/16 */
+  display: block;
+  color: #742C16;
+  position: relative; }
+  .circle-button:after {
+    content: "";
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    border: 2px dashed white; }
+
+.ibook-download:before {
+  content: url("../images/ipad-icon.svg");
+  display: block; }
+.ibook-download:after {
+  margin-top: -117px;
+  margin-left: -122px; }
+
+.colouring-book-download:before {
+  content: url("../images/pencil-icon.svg");
+  display: block; }
+.colouring-book-download:after {
+  margin-top: -117px;
+  margin-left: -159px; }
+
+.about-author:before {
+  content: url("../images/person-icon.svg");
+  display: block; }
+.about-author:after {
+  margin-top: -92px;
+  margin-left: -168px; }
+
+.light-blue {
+  background: #B9EAE9; }
+  .light-blue:hover, .light-blue:active {
+    background: #a5e4e3; }
+
+.pink {
+  background: #F7C9D7; }
+  .pink:hover, .pink:active {
+    background: #f4b3c7; }
+
+.light-green {
+  background: #BDDD97; }
+  .light-green:hover, .light-green:active {
+    background: #b1d784; }
+
+footer {
+  background: #742C16;
+  text-align: left;
+  margin: 0;
+  padding-bottom: 25px; }
+  footer p {
+    font-size: 1.25em;
+    /* 20/16 */
+    color: white; }
+  footer a {
+    text-decoration: none;
+    color: #FFEC00;
+    font-weight: bold; }
+
+.footer-nelly {
+  display: none; }
+
+.share-buttons-container {
+  margin-top: 10px; }
+
+ul.share-buttons {
+  list-style: none;
+  padding: 0;
+  float: left; }
+
+ul.share-buttons li {
+  display: inline;
+  margin-right: 5px; }
+
+@media screen and (min-width: 912px) {
+  footer {
+    min-height: 220px; }
+
+  .footer-content {
+    position: relative;
+    padding-top: 130px;
+    z-index: 2; }
+
+  .footer-nelly {
+    display: block;
+    position: absolute;
+    margin-top: -70px;
+    margin-left: -80px;
+    z-index: 1;
+    overflow: hidden; }
+
+  .footer-share-buttons {
+    position: absolute;
+    margin-top: 30px; } }
+@media screen and (min-width: 894px) {
+  .book-snaps img {
+    min-width: 309px; } }
+.come-back-soon {
+  padding: 40px 0 0; }
+
+.bubble-container {
+  position: relative;
+  display: block; }
+
+.bubble {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 30%; }
+  .bubble.video {
+    right: 0;
+    margin-top: -5%; }
+    @media (min-width: 1260px) {
+      .bubble.video {
+        width: 40%;
+        right: -20%;
+        margin-top: 5%; } }
+  .bubble.colouring-book {
+    right: 50%;
+    left: 40%;
+    margin-top: -10%; }
+    @media (min-width: 1260px) {
+      .bubble.colouring-book {
+        left: 50%;
+        right: -100px; } }
+  .bubble.digital-book {
+    left: 5%;
+    margin-top: -10%; }
+    @media (min-width: 1260px) {
+      .bubble.digital-book {
+        left: 15%;
+        margin-top: -5%; } }
+
+.video-container {
+  margin-top: 20px !important; }
+  .video-container h3 {
+    margin-bottom: 10px; }
+
+.small-print {
+  margin-top: 20px !important; }
+
+/* Clearfix
+------------------------------------------------------------------------------------------------------------------------------------------ */
+.group:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+/* floats
+------------------------------------------------------------------------------------------------------------------------------------------ */
+.pull-right {
+  float: right; }
+
+.pull-left {
+  float: left; }
+
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .full, .left-column, .right-column {
+  float: left;
+  margin: 10px 1%;
+  padding: 10px; }
+
+/* Container - delete this if you don't need one
+------------------------------------------------------------------------------------------------------------------------------------------ */
+.container {
+  width: 730px;
+  margin: 0 auto;
+  clear: both; }
+  @media screen and (max-width: 730px) {
+    .container {
+      width: 100%; } }
+
+/* Makes images responsive
+------------------------------------------------------------------------------------------------------------------------------------------ */
+img {
+  max-width: 100%; }
+
+/* Choose a column size
+------------------------------------------------------------------------------------------------------------------------------------------ */
+.one {
+  width: 6.33333%; }
+  @media screen and (max-width: 640px) {
+    .one {
+      width: 98%; } }
+
+.two {
+  width: 14.66667%; }
+  @media screen and (max-width: 640px) {
+    .two {
+      width: 98%; } }
+
+.three {
+  width: 23%; }
+  @media screen and (max-width: 640px) {
+    .three {
+      width: 98%; } }
+
+.four {
+  width: 31.33333%; }
+  @media screen and (max-width: 640px) {
+    .four {
+      width: 98%; } }
+
+.five {
+  width: 39.66667%; }
+  @media screen and (max-width: 640px) {
+    .five {
+      width: 98%; } }
+
+.six {
+  width: 48%; }
+  @media screen and (max-width: 640px) {
+    .six {
+      width: 98%; } }
+
+.seven {
+  width: 56.33333%; }
+  @media screen and (max-width: 640px) {
+    .seven {
+      width: 98%; } }
+
+.eight {
+  width: 64.66667%; }
+  @media screen and (max-width: 640px) {
+    .eight {
+      width: 98%; } }
+
+.nine {
+  width: 73%; }
+  @media screen and (max-width: 640px) {
+    .nine {
+      width: 98%; } }
+
+.ten {
+  width: 81.33333%; }
+  @media screen and (max-width: 640px) {
+    .ten {
+      width: 98%; } }
+
+.eleven {
+  width: 89.66667%; }
+  @media screen and (max-width: 640px) {
+    .eleven {
+      width: 98%; } }
+
+.twelve, .full {
+  width: 98%; }
+  @media screen and (max-width: 640px) {
+    .twelve, .full {
+      width: 98%; } }
+
+/* Or make your own - Delete the default columns to save bloating your CSS if you chose to make your own
+------------------------------------------------------------------------------------------------------------------------------------------ */
+.left-column {
+  width: 31.33333%;
+  background: #3498db; }
+  @media screen and (max-width: 640px) {
+    .left-column {
+      width: 98%; } }
+
+.right-column {
+  width: 64.66667%;
+  background: #3498db; }
+  @media screen and (max-width: 640px) {
+    .right-column {
+      width: 98%; } }
+
+.pull-right {
+  float: right; }
+
+.pull-left {
+  float: left; }
